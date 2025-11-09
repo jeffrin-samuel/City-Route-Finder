@@ -16,6 +16,17 @@ struct City {
     int id;
 };
 
+// ---------------------------------
+// Struct to represent route result
+// ---------------------------------
+
+struct RouteResult {
+    int distance;  // total shortest distance in km
+    float hours;   // estimated travel time in hours
+};
+
+
+
 // -----------------------------
 // Function to print all shortest paths from source to current node
 // -----------------------------
@@ -79,8 +90,13 @@ void dijkstraAllPaths(int V, vector<pair<int,int>> adj[], int src, int dest, vec
         return;
     }
 
+    //Object for RouteResult 
+    RouteResult result;
+    result.distance = dist[dest];
+    result.hours = dist[dest] / avgSpeed;
+
     // Output shortest distance
-    cout << "\nShortest Distance from " << cities[src].name << " to " << cities[dest].name << " = " << dist[dest] << " km\n";
+    cout << "\nShortest Distance from " << cities[src].name << " to " << cities[dest].name << " = " << result.distance << " km\n";
 
     // Output all shortest paths
     cout << "\nAll shortest paths:\n";
@@ -89,7 +105,7 @@ void dijkstraAllPaths(int V, vector<pair<int,int>> adj[], int src, int dest, vec
 
     // Estimate travel time
     float hours = dist[dest] / avgSpeed;
-    cout << "\nEstimated Travel Time (at " << avgSpeed << " km/hr): " << fixed << setprecision(2) << hours << " hours\n";
+    cout << "\nEstimated Travel Time (at " << avgSpeed << " km/hr): " << fixed << setprecision(2) << result.hours << " hours\n";
 }
 
 // -----------------------------
