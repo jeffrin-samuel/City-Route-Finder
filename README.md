@@ -23,12 +23,13 @@ It uses a **min-heap (priority queue)** to always pick the next nearest city eff
 
 | Data Structure | Purpose |
 |----------------|----------|
-| `struct City` | Stores each city’s name and ID |
+| `struct City` | Stores each city’s name and ID (Convert id → name while printing the paths) |
+| `struct RouteResult` | To represent the route result |
 | `vector<pair<int,int>> adj[]` | Adjacency list to store connected cities and distances |
 | `vector<int>` | To store distances and temporary paths |
 | `vector<vector<int>>` | To store all parent nodes for multiple shortest paths |
 | `priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>>` | Min-heap for selecting the next city with the smallest distance (core of Dijkstra’s Algorithm) |
-| `unordered_map<string,int>` | Maps city names to numeric IDs for quick lookup |
+| `unordered_map<string,int>` | Maps city names to numeric IDs for quick lookup (Convert name → id to get the id immediately in O(1) lookup as the user types the src & dest |
 
 These data structures make the program **efficient**, **organized**, and **scalable** for multiple cities.
 
