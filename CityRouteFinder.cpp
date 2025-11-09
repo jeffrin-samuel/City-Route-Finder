@@ -62,14 +62,14 @@ void dijkstraAllPaths(int V, vector<pair<int,int>> adj[], int src, int dest, vec
     pq.push({0, src});
 
     while (!pq.empty()) {
-        int u = pq.top().second; // Node with smallest distance
-        int d = pq.top().first;  // Distance of that node
+        int u = pq.top().second; // currNode
+        int d = pq.top().first;  // currPathSum
         pq.pop();
 
         if (d > dist[u]) continue; // Skip if we already found a shorter path
 
         for (auto edge : adj[u]) {
-            int v = edge.first;   // Neighbor node
+            int v = edge.first;   // Neighbour node
             int w = edge.second;  // Edge weight (distance)
 
             if (dist[u] + w < dist[v]) {
